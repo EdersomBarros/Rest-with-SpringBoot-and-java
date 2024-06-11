@@ -1,15 +1,16 @@
 package br.com.Rest_with._SpringBoot.controller;
 
 
-import br.com.Rest_with._SpringBoot.model.Person;
+
+import br.com.Rest_with._SpringBoot.data.vo.v1.PersonVO;
+import br.com.Rest_with._SpringBoot.data.vo.v2.PersonVO2;
 import br.com.Rest_with._SpringBoot.services.PersonServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
-
 
 
 @RestController
@@ -19,36 +20,37 @@ public class PersonController {
     @Autowired
     private PersonServices service;
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person findById(
-            @PathVariable(value = "id")String id)   throws Exception{
-        return service.findById(id);
-    }
-
-    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Person> findAll() {
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<PersonVO> findAll() {
         return service.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.POST,
-                    consumes = MediaType.APPLICATION_JSON_VALUE,
-                    produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person crate(@RequestBody Person person)   throws Exception{
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public PersonVO findById(
+            @PathVariable(value = "id")Long id) {
+        return service.findById(id);
+    }
+
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public PersonVO crate(@RequestBody PersonVO person) {
         return service.create(person);
     }
 
-    @RequestMapping(method = RequestMethod.PUT,
-            consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person update(@RequestBody Person person)   throws Exception{
+    @PostMapping(value = "/v2", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public PersonVO2 crateV2(@RequestBody PersonVO2 person) {
+        return service.createV2(person);
+    }
+
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public PersonVO update(@RequestBody PersonVO person){
         return service.update(person);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void delete(
-            @PathVariable(value = "id")String id)   throws Exception{
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<?> delete(
+            @PathVariable(value = "id")Long id)   throws Exception{
         service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 

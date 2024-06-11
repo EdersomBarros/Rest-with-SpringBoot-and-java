@@ -1,29 +1,19 @@
-package br.com.Rest_with._SpringBoot.model;
-
-import jakarta.persistence.*;
+package br.com.Rest_with._SpringBoot.data.vo.v2;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
-@Entity
-@Table(name = "person")
-public class Person implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class PersonVO2 implements Serializable {
+
+
     private Long id;
-
-    @Column(name = "first_name", nullable = false)
     private String firstName;
-
-    @Column(name = "last_name", nullable = false)
     private String lastName;
-
-    @Column(nullable = false, length = 100)
     private String address;
-
-    @Column(nullable = false, length = 80)
     private String gender;
+    private Date birthDay;
 
 
     public String getFirstName() {
@@ -58,8 +48,15 @@ public class Person implements Serializable {
         this.gender = gender;
     }
 
+    public Date getBirthDay() {
+        return birthDay;
+    }
 
-    public Person() {}
+    public void setBirthDay(Date birthDay) {
+        this.birthDay = birthDay;
+    }
+
+    public PersonVO2() {}
 
     public Long getId() {
         return id;
@@ -69,16 +66,17 @@ public class Person implements Serializable {
         this.id = id;
     }
 
+
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
-        Person person = (Person) object;
-        return Objects.equals(id, person.id);
+        PersonVO2 personVO2 = (PersonVO2) object;
+        return Objects.equals(id, personVO2.id) && Objects.equals(firstName, personVO2.firstName) && Objects.equals(lastName, personVO2.lastName) && Objects.equals(address, personVO2.address) && Objects.equals(gender, personVO2.gender) && Objects.equals(birthDay, personVO2.birthDay);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+        return Objects.hash(id, firstName, lastName, address, gender, birthDay);
     }
 }

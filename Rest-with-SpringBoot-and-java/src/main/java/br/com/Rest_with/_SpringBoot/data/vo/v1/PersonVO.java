@@ -1,28 +1,16 @@
-package br.com.Rest_with._SpringBoot.model;
-
-import jakarta.persistence.*;
+package br.com.Rest_with._SpringBoot.data.vo.v1;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
-@Table(name = "person")
-public class Person implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class PersonVO implements Serializable {
+
+
     private Long id;
-
-    @Column(name = "first_name", nullable = false)
     private String firstName;
-
-    @Column(name = "last_name", nullable = false)
     private String lastName;
-
-    @Column(nullable = false, length = 100)
     private String address;
-
-    @Column(nullable = false, length = 80)
     private String gender;
 
 
@@ -59,7 +47,7 @@ public class Person implements Serializable {
     }
 
 
-    public Person() {}
+    public PersonVO() {}
 
     public Long getId() {
         return id;
@@ -73,7 +61,7 @@ public class Person implements Serializable {
     public boolean equals(Object object) {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
-        Person person = (Person) object;
+        PersonVO person = (PersonVO) object;
         return Objects.equals(id, person.id);
     }
 
