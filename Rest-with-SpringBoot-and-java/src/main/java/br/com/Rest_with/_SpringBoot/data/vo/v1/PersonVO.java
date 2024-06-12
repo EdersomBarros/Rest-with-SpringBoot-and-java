@@ -1,9 +1,12 @@
 package br.com.Rest_with._SpringBoot.data.vo.v1;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
 import java.io.Serializable;
 import java.util.Objects;
 
-
+@JsonPropertyOrder({"id", "address",  "firstName", "lastName", "gender"})
 public class PersonVO implements Serializable {
 
 
