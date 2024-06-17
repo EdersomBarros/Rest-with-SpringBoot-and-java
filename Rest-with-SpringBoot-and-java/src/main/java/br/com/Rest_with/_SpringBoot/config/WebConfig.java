@@ -1,12 +1,13 @@
 package br.com.Rest_with._SpringBoot.config;
 
-import br.com.Rest_with._SpringBoot.serialization.converter.YamlJacksonHttpMesageConverter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import br.com.Rest_with._SpringBoot.serialization.converter.YamlJacksonHttpMesageConverter;
 
 import java.util.List;
 
