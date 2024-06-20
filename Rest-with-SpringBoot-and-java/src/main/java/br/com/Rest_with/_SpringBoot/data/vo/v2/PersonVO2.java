@@ -8,7 +8,9 @@ import java.util.Objects;
 public class PersonVO2 implements Serializable {
 
 
-    private Long id;
+    
+	private static final long serialVersionUID = 1L;
+	private Long id;
     private String firstName;
     private String lastName;
     private String address;
