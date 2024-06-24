@@ -1,8 +1,8 @@
-INSERT INTO rest_with_spring_boot.person (first_name, last_name, address, gender) VALUES
-                               ('Ayrton', 'Senna', 'São Paulo', 'Male'),
-                               ('Leonardo', 'da Vinci', 'Anchiano - Italy', 'Male'),
-                               ('Indira', 'Gandhi', 'Porbandar - India', 'Female'),
-                               ('Mahatma', 'Gandhi', 'Porbandar - India', 'Male'),
-                               ('Muhammad', 'Ali', 'Kentucky - US', 'Male'),
-                               ('Nelson', 'Mandela', 'Mvezo – South Africa', 'Male'),
-                               ('Nikola', 'Tesla', 'Smiljan - Croácia', 'Male');
+INSERT INTO `person` (`id`,`first_name`, `last_name`, `address`, `gender`) VALUES
+                               (1,'Ayrton', 'Senna', 'São Paulo', 'Male'),
+                               (2,'Leonardo', 'da Vinci', 'Anchiano - Italy', 'Male'),
+                               (3,'Indira', 'Gandhi', 'Porbandar - India', 'Female'),
+                               (4,'Mahatma', 'Gandhi', 'Porbandar - India', 'Male'),
+                               (5,'Muhammad', 'Ali', 'Kentucky - US', 'Male'),
+                               (6,'Nelson', 'Mandela', 'Mvezo – South Africa', 'Male'),
+                               (7,'Nikola', 'Tesla', 'Smiljan - Croácia', 'Male');
